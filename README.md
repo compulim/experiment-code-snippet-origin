@@ -1,19 +1,11 @@
-## Your repository is almost ready
+## experiment-code-snippet-origin
 
-There are few more steps to enable GitHub Pages and continuous deployment.
+This experiment has the following setup:
 
-1. Enable GitHub Pages
-   1. Navigate to [Pages settings](../../settings/pages)
-   1. In the "Source" field, select "GitHub Actions"
-1. Trigger the deployment
-   1. [Modify and commit `App.tsx` to main](../../edit/main/src/ui/App.tsx)
-   1. Check deployment workflow at [![Deploy static content to Pages](../../actions/workflows/static.yml/badge.svg)](../../actions/workflows/static.yml)
+- App server (CDN) serving `index.html` on port 8000
+- Code snippet (CDN) serving `code-snippet.min.js` on port 8001
+- API server answering `POST /api/origin` on port 8002
 
-### GitHub Codespaces
+The `index.html` will run `<script src="code-snippet.min.js">`. The `code-snippet.min.js` will `fetch('http://localhost:8002/api/origin', { method: 'post' })`.
 
-You can set up prebuild to speed up Codespaces creation. The prebuilt image will pre-install all dependencies under `/node_modules/` with initial build.
-
-1. [Set up Codespaces prebuilds](../../settings/codespaces/prebuild_configurations/new)
-   1. Check prebuild workflow at [![Codespaces Prebuilds](../../actions/workflows/codespaces/create_codespaces_prebuilds/badge.svg)](../../actions/workflows/codespaces/create_codespaces_prebuilds)
-
-Once the prebuild action is completed, you can create a new prebuilt codespace.
+We want to make sure, the API server should see HTTP header `Origin: http://localhost:8000`.
