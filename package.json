@@ -5,7 +5,11 @@
     "postinstall": "npm run postinstall:app && npm run postinstall:code-snippet && npm run postinstall:service",
     "postinstall:app": "cd packages/app && npm ci",
     "postinstall:code-snippet": "cd packages/code-snippet && npm ci",
-    "postinstall:service": "cd packages/service && npm ci"
+    "postinstall:service": "cd packages/service && npm ci",
+    "start": "concurrently --kill-others \"npm run start:*\"",
+    "start:app": "cd packages/app && npm start",
+    "start:code-snippet": "cd packages/code-snippet && npm start",
+    "start:service": "cd packages/service && npm start"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/compulim/experiment-code-snippet-origin/issues"
   },
-  "homepage": "https://github.com/compulim/experiment-code-snippet-origin#readme"
+  "homepage": "https://github.com/compulim/experiment-code-snippet-origin#readme",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
 }
