@@ -1,27 +1,20 @@
 {
-  "name": "react-esbuild-app",
+  "name": "experiment-code-snippet-origin",
   "version": "0.0.0-0",
-  "private": true,
-  "keywords": [
-    "template-react-esbuild"
-  ],
   "scripts": {
-    "build": "concurrently \"npm run build:*\"",
-    "build:esbuild": "esbuild --bundle --jsx=automatic --minify --outfile=./public/static/js/main.js src/index.tsx",
-    "build:typescript": "tsc -p ./src/tsconfig.json",
-    "start": "concurrently --kill-others \"npm run start:*\"",
-    "start:esbuild": "npm run build:esbuild -- --servedir=./public",
-    "start:typescript": "npm run build:typescript -- --watch"
+    "postinstall": "npm run postinstall:app && npm run postinstall:code-snippet && npm run postinstall:service",
+    "postinstall:app": "cd packages/app && npm ci",
+    "postinstall:code-snippet": "cd packages/code-snippet && npm ci",
+    "postinstall:service": "cd packages/service && npm ci"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compulim/experiment-code-snippet-origin.git"
   },
-  "devDependencies": {
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "concurrently": "^8.0.1",
-    "esbuild": "^0.17.18",
-    "typescript": "^5.0.4"
-  }
+  "author": "William Wong (https://github.com/compulim)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/compulim/experiment-code-snippet-origin/issues"
+  },
+  "homepage": "https://github.com/compulim/experiment-code-snippet-origin#readme"
 }

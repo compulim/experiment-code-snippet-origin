@@ -1,0 +1,20 @@
+{
+  "name": "experiment-code-snippet-origin-code-snippet",
+  "version": "0.0.0-0",
+  "private": true,
+  "keywords": [
+    "template-react-esbuild"
+  ],
+  "type": "module",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node-dev ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "node-dev": "^8.0.0"
+  }
+}
